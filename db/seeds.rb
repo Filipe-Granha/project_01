@@ -69,7 +69,7 @@ tag4 = Tag.new({
 
 transaction1 = Transaction.new({
   "amount" => 100,
-  "date" => "2017-06-02",
+  "day" => "2017-06-02",
   "merchant_id" => merchant7.id,
   "tag_id" => tag3.id
   })
@@ -77,7 +77,7 @@ transaction1 = Transaction.new({
 
 transaction2 = Transaction.new({
   "amount" => 40,
-  "date" => "2017-06-10",
+  "day" => "2017-06-10",
   "merchant_id" => merchant1.id,
   "tag_id" => tag1.id
   })
@@ -85,7 +85,7 @@ transaction2 = Transaction.new({
 
 transaction3 = Transaction.new({
   "amount" => 1000,
-  "date" => "2017-06-10",
+  "day" => "2017-06-10",
   "merchant_id" => merchant5.id,
   "tag_id" => tag2.id
   })
@@ -93,7 +93,7 @@ transaction3 = Transaction.new({
 
 transaction4 = Transaction.new({
   "amount" => 108,
-  "date" => "2017-06-08",
+  "day" => "2017-06-08",
   "merchant_id" => merchant6.id,
   "tag_id" => tag4.id
   })
@@ -101,7 +101,7 @@ transaction4 = Transaction.new({
 
 transaction5 = Transaction.new({
   "amount" => 100,
-  "date" => "2017-06-17",
+  "day" => "2017-06-17",
   "merchant_id" => merchant4.id,
   "tag_id" => tag3.id
   })
