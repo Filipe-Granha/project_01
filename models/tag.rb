@@ -13,7 +13,7 @@ end
 
 def save()
 sql = "INSERT into tags (name)
-VALUES '#{@name} RETURNING *;"
+VALUES ('#{@name}) RETURNING *;"
 results = SqlRunner.run(sql)
 @id = results.first()["id"].to_i
 end

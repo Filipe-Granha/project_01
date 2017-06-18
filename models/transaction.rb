@@ -15,6 +15,13 @@ def initialize(options)
 end
 
 
+def save()
+sql = "INSERT into transactions (amount, day, merchant_id, tag_id)
+VALUES ('#{@amount}', '#{@day}', '#{@merchant_id}', '#{@tag_id}') RETURNING *;"
+results = SqlRunner.run(sql)
+@id = results.first()["id"].to_i
+end
+
 
 
 
