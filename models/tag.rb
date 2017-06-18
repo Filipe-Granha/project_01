@@ -18,6 +18,11 @@ results = SqlRunner.run(sql)
 @id = results.first()["id"].to_i
 end
 
+def Tag.all()
+sql = "SELECT * FROM tags;"
+result_hash = SqlRunner.run(sql)
+return result_hash.map {|tag| Tag.new(tag)}
+end
 
 
 
