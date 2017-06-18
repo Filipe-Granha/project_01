@@ -6,11 +6,11 @@ class Transaction
 attr_reader(:id, :amount, :day, :merchant_id, :tag_id)
 
 def initialize(options)
-  @id = ["id"].to_i
-  @amount = ["amount"]
-  @day = ["day"]
-  @merchant_id = ["merchant_id"].to_i
-  @tag_id = ["tag_id"].to_i
+  @id = options["id"].to_i
+  @amount = options["amount"]
+  @day = options["day"]
+  @merchant_id = options["merchant_id"].to_i
+  @tag_id = options["tag_id"].to_i
 end
 
 
