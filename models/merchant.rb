@@ -23,4 +23,11 @@ end
 
 
 
+def Merchant.all()
+sql = "SELECT * FROM merchants;"
+result_hash = SqlRunner.run(sql)
+return result_hash.map {|merchant| Merchant.new(merchant)}
+end
+
+
 end
