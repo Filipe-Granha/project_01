@@ -106,3 +106,7 @@ transaction5 = Transaction.new({
   "tag_id" => tag3.id
   })
 transaction5.save
+
+
+binding.pry
+nil
