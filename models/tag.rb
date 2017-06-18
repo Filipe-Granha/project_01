@@ -11,6 +11,12 @@ def initialize(options)
   @name = options['name']
 end
 
+def save()
+sql = "INSERT into tags (name)
+VALUES '#{@name} RETURNING *;"
+results = SqlRunner.run(sql)
+@id = results.first()["id"].to_i
+end
 
 
 
