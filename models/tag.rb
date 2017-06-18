@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner")
+require("pg")
 
 class Tag
 
