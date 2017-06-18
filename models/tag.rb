@@ -11,6 +11,7 @@ class Tag
     @name = options['name']
   end
 
+
   def save()
     sql = "INSERT into tags (name)
     VALUES ('#{@name}') RETURNING *;"
@@ -18,11 +19,22 @@ class Tag
     @id = results.first()["id"].to_i
   end
 
+
+
   def Tag.all()
     sql = "SELECT * FROM tags;"
     result_hash = SqlRunner.run(sql)
     return result_hash.map {|tag| Tag.new(tag)}
   end
+
+
+
+
+  def Tag.delete_all
+    sql = "DELETE FROM tags"
+    SqlRunner.run( sql )
+  end
+
 
 
 

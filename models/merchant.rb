@@ -30,4 +30,12 @@ class Merchant
   end
 
 
+
+
+  def Merchant.delete_all
+    sql = "DELETE FROM merchants"
+    SqlRunner.run( sql )
+  end
+
+
 end

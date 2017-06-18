@@ -15,6 +15,7 @@ class Transaction
   end
 
 
+
   def save()
     sql = "INSERT into transactions (amount, day, merchant_id, tag_id)
     VALUES ('#{@amount}', '#{@day}', '#{@merchant_id}', '#{@tag_id}') RETURNING *;"
@@ -23,11 +24,21 @@ class Transaction
   end
 
 
+
   def Transaction.all()
     sql = "SELECT * FROM transactions;"
     result_hash = SqlRunner.run(sql)
     return result_hash.map {|transaction| Transaction.new(transaction)}
   end
+
+
+
+  def Transaction.delete_all
+    sql = "DELETE FROM transactions"
+    SqlRunner.run( sql )
+  end
+
+
 
 
 end
