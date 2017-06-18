@@ -30,9 +30,9 @@ class Tag
 
 
 
-  def Tag.delete_all
+  def Tag.delete_all()
     sql = "DELETE FROM tags"
-    SqlRunner.run( sql )
+    SqlRunner.run(sql)
   end
 
 

@@ -33,9 +33,33 @@ class Transaction
 
 
 
-  def Transaction.delete_all
+  def Transaction.delete_all()
     sql = "DELETE FROM transactions"
-    SqlRunner.run( sql )
+    SqlRunner.run(sql)
+  end
+
+
+
+
+  def merchant()
+    sql = "SELECT * FROM merchants
+          INNER JOIN transactions
+          ON transactions.merchant_id = merchants.id
+          WHERE merchants.id = #{@merchant_id}"
+    results = SqlRunner.run(sql)
+    return Merchant.new(results.first)
+  end
+
+
+
+  
+  def tag()
+    sql = "SELECT * FROM tags
+          INNER JOIN transactions
+          ON transactions.tag_id = tags.id
+          WHERE tags.id = #{@tag_id}"
+    results = SqlRunner.run(sql)
+    return Tag.new(results.first)
   end
 
 
