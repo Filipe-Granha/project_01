@@ -7,6 +7,7 @@ require("pry-byebug")
 Merchant.delete_all()
 Tag.delete_all()
 Transaction.delete_all()
+# These will allow for the tables to start every time without having repeated rows
 
 
 
