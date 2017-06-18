@@ -23,6 +23,11 @@ results = SqlRunner.run(sql)
 end
 
 
+def Transaction.all()
+sql = "SELECT * FROM transactions;"
+result_hash = SqlRunner.run(sql)
+return result_hash.map {|transaction| Transaction.new(transaction)}
+end
 
 
 end
