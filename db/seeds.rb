@@ -4,6 +4,13 @@ require_relative("../models/transaction")
 require("pry-byebug")
 
 
+Merchant.delete_all()
+Tag.delete_all()
+Transaction.delete_all()
+
+
+
+
 merchant1 = Merchant.new({
   "name" => "Lidl"
   })
