@@ -4,30 +4,30 @@ require("pg")
 class Merchant
 
 
-attr_reader(:id, :name)
+  attr_reader(:id, :name)
 
-def initialize(options)
-  @id = options['id'].to_i
-  @name = options['name']
-end
-
-
-
-
-def save()
-sql = "INSERT into merchants (name)
-VALUES ('#{@name}') RETURNING *;"
-results = SqlRunner.run(sql)
-@id = results.first()["id"].to_i
-end
+  def initialize(options)
+    @id = options['id'].to_i
+    @name = options['name']
+  end
 
 
 
-def Merchant.all()
-sql = "SELECT * FROM merchants;"
-result_hash = SqlRunner.run(sql)
-return result_hash.map {|merchant| Merchant.new(merchant)}
-end
+
+  def save()
+    sql = "INSERT into merchants (name)
+    VALUES ('#{@name}') RETURNING *;"
+    results = SqlRunner.run(sql)
+    @id = results.first()["id"].to_i
+  end
+
+
+
+  def Merchant.all()
+    sql = "SELECT * FROM merchants;"
+    result_hash = SqlRunner.run(sql)
+    return result_hash.map {|merchant| Merchant.new(merchant)}
+  end
 
 
 end
