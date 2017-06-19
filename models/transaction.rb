@@ -45,6 +45,15 @@ class Transaction
 
 
 
+  def self.delete(id)
+     sql = "DELETE FROM transactions where id = #{@id}"
+     SqlRunner.run(sql)
+  end
+
+
+
+
+
   def merchant()
     sql = "SELECT * FROM merchants WHERE id = #{@merchant_id}"
     merchant = SqlRunner.run(sql).first
