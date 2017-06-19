@@ -32,7 +32,7 @@ class Merchant
 
 
 
-  def Merchant.delete_all()
+  def self.delete_all()
     sql = "DELETE FROM merchants"
     SqlRunner.run(sql)
   end
@@ -41,6 +41,12 @@ class Merchant
   def self.delete(id)
      sql = "DELETE FROM merchants where id = #{@id}"
      SqlRunner.run(sql)
+  end
+
+
+  def update()
+    sql = "UPDATE merchants SET (name) = ('#{@name}') WHERE id = #{@id};"
+    SqlRunner.run(sql)
   end
 
 

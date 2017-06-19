@@ -43,5 +43,11 @@ class Tag
   end
 
 
+  def update()
+    sql = "UPDATE tags SET (name) = ('#{@name}') WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
+
 
 end

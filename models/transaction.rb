@@ -16,6 +16,18 @@ class Transaction
 
 
 
+  def current_budget()
+    budget = 3000
+    expenditure = self.total_amount_spent
+    amount_available = budget - expenditure
+      if (budget > expenditure)
+        return "You still have #{amount_available}"
+      else
+        return "You've already spent more than your budget"
+      end
+  end
+
+
 
 
   def save()
@@ -27,6 +39,7 @@ class Transaction
 
 
 
+
   def self.all()
     sql = "SELECT * FROM transactions;"
     result_hash = SqlRunner.run(sql)
@@ -34,6 +47,7 @@ class Transaction
   end
   # This takes an array of hashes and gives me an array of objects: transforms each hash into an object
   # It allows me to get the rows from the table (hashes) and show them to me in the form of objects
+
 
 
 
@@ -51,6 +65,20 @@ class Transaction
   end
 
 
+
+  def update()
+    sql = "UPDATE transactions SET (
+    amount,
+    day,
+    merchant_id,
+    tag_id
+    ) = (
+    '#{@amount}',
+    '#{@day}',
+    '#{merchant_id}',
+    '#{tag_id}') WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
 
 
 
@@ -85,6 +113,7 @@ end
 # dá-me na mesma as transactions, mas apenas aquelas que corresponderem à tag que eu seleccionar
 
 
+
 # Sandy - capta e soma o .amount de cada transaction que corresponda à tag especificada 
 def total_spent_by_tag(tag_id)
   total = 0
@@ -107,16 +136,7 @@ end
 
 
 
-def current_budget
-  budget = 3000
-  expenditure = self.total_amount_spent
-  amount_available = budget - expenditure
-    if (budget > expenditure)
-      return "You still have #{amount_available}"
-    else
-      return "You've already spent more than your budget"
-    end
-end
+
 
 
 
