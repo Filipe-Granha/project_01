@@ -108,7 +108,7 @@ class Transaction
 
 
 
-
+# THESE TWO METHODS WILL ALLOW TO GET THE TOTAL SPENT PER tag:
 
 # dá-me um array com objectos lá dentro
 def self.transactions_by_tag(tag_id)
@@ -134,17 +134,22 @@ end
 
 
 
+# THESE TWO METHODS WILL ALLOW TO GET THE TOTAL SPENT PER merchant:
+
+def self.transactions_by_merchant(merchant_id)
+  sql = "SELECT * FROM transactions WHERE merchant_id = #{merchant_id};"
+  result_hash = SqlRunner.run(sql)
+  return result_hash.map {|transaction| Transaction.new(transaction)}
+end
 
 
-# def self.spent_by_tag
-#   sql = "SELECT tags.name, transactions.amount FROM tags
-#   INNER JOIN transactions
-#   ON transactions.tag_id = tags.id
-#   INNER JOIN merchants
-#   ON merchants.id = transactions.merchant_id;"
-#   result_hash = SqlRunner.run(sql)
-#   return result_hash.map {|tag| Transaction.new(tag)}
-# end
+def self.total_spent_by_merchant(merchant_id)
+  total = 0
+  transactions = self.transactions_by_merchant(merchant_id)
+  transactions.each {|transaction| total+= transaction.amount.to_i}
+  return total
+end
+
 
 
 
