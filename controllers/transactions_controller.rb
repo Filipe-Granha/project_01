@@ -11,7 +11,7 @@ get '/transactions' do
   @transactions = Transaction.all
 erb(:"transaction/index")
 end
-# Will show table with all transactions
+# Shows table with all transactions
 
 
 get '/transactions/new' do
@@ -20,58 +20,26 @@ get '/transactions/new' do
   @tags = Tag.all
 erb(:"transaction/new")
 end
-# Should show a form to receive data from user
+# Shows a form to receive data from user
+
+
 
 post '/transactions' do
   transaction = Transaction.new(params)
   transaction.save
   redirect to '/transactions'
 end
+# Posts to the database the data inserted on the table
+
 
 
 get '/transactions/total' do
   @total = Transaction.current_budget
 erb(:"transaction/total")
 end
+# Executes the current_budget method
 
 
 
 
 
-
-
-
-
-
-# get '/students/new' do
-#   @houses = House.all
-#   erb(:new)
-# end
-
-# post '/students' do
-#   Student.new(params).save
-#   redirect to '/students'
-# end
-
-# get '/students/:id' do
-#   @student = Student.find(params['id'])
-#   erb(:show)
-# end
-
-# get '/students/:id/edit' do
-#   @houses = House.all
-#   @student = Student.find(params['id'])
-#   erb(:edit)
-# end
-
-# post '/students/:id' do
-#   student = Student.new(params)
-#   student.update
-#   redirect to "/students/#{params['id']}"
-# end
-
-# post '/students/:id/delete' do
-#   student = Student.find(params['id'])
-#   student.delete
-#   redirect to '/students'
-# end

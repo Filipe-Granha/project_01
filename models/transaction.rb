@@ -16,10 +16,6 @@ class Transaction
 
 
 
-
-
-
-
   def Transaction.all()
     sql = "SELECT * FROM transactions;"
     result_hash = SqlRunner.run(sql)
@@ -29,6 +25,12 @@ class Transaction
   # It allows me to get the rows from the table (hashes) and show them to me in the form of objects
 
 
+  def save()
+    sql = "INSERT into transactions (amount, date, merchant_id, tag_id)
+    VALUES ('#{@amount}', '#{@date}', '#{@merchant_id}', '#{@tag_id}') RETURNING *;"
+    results = SqlRunner.run(sql)
+    @id = results.first()["id"].to_i
+  end
 
 
   def self.total_amount_spent
@@ -37,7 +39,7 @@ class Transaction
     transactions.each {|transaction| total+= transaction.amount.to_i} # takes the .amount of each transaction and adds it to the variable total (which starts at 0)
     return total
   end
-
+  # Is being used by the current_budget method
 
 
   def self.current_budget()
@@ -52,17 +54,22 @@ class Transaction
   end
 
 
-  def save()
-    sql = "INSERT into transactions (amount, date, merchant_id, tag_id)
-    VALUES ('#{@amount}', '#{@date}', '#{@merchant_id}', '#{@tag_id}') RETURNING *;"
-    results = SqlRunner.run(sql)
-    @id = results.first()["id"].to_i
-  end
+    def merchant()
+      sql = "SELECT * FROM merchants WHERE id = #{@merchant_id}"
+      merchant = SqlRunner.run(sql).first
+      return Merchant.new(merchant)
+    end  
+  # One transaction will only have one merchant
+  # This is needed in the index.erb!!!!
 
 
-
-
-  
+    def tag()
+      sql = "SELECT * FROM tags WHERE id = #{@tag_id};"
+      result = SqlRunner.run(sql).first
+      return Tag.new(result)
+    end
+  # One tag will have more than one transaction
+  # This is needed in the index.erb!!!!
 
 
   def self.delete_all()
@@ -71,13 +78,10 @@ class Transaction
   end
 
 
-
-
   def self.delete(id)
      sql = "DELETE FROM transactions where id = #{@id}"
      SqlRunner.run(sql)
   end
-
 
 
   def update()
@@ -96,30 +100,19 @@ class Transaction
 
 
 
-  def merchant()
-    sql = "SELECT * FROM merchants WHERE id = #{@merchant_id}"
-    merchant = SqlRunner.run(sql).first
-    return Merchant.new(merchant)
-  end  
-# One transaction will only have one merchant
-# This is needed in the index.erb!!!!
+  
 
 
 
 
-  def tag()
-    sql = "SELECT * FROM tags WHERE id = #{@tag_id};"
-    result = SqlRunner.run(sql).first
-    return Tag.new(result)
-  end
-# One tag will have more than one transaction
+
 
 
 
 
 # dá-me um array com objectos lá dentro
 def self.transactions_by_tag(tag_id)
-  sql = "SELECT * FROM transactions WHERE tag_id = #{@tag_id};"
+  sql = "SELECT * FROM transactions WHERE tag_id = #{tag_id};"
   result_hash = SqlRunner.run(sql)
   return result_hash.map {|transaction| Transaction.new(transaction)}
 end
@@ -143,15 +136,15 @@ end
 
 
 
-def self.spent_by_tag
-  sql = "SELECT tags.name, transactions.amount FROM tags
-  INNER JOIN transactions
-  ON transactions.tag_id = tags.id
-  INNER JOIN merchants
-  ON merchants.id = transactions.merchant_id;"
-  result_hash = SqlRunner.run(sql)
-  return result_hash.map {|tag| Transaction.new(tag)}
-end
+# def self.spent_by_tag
+#   sql = "SELECT tags.name, transactions.amount FROM tags
+#   INNER JOIN transactions
+#   ON transactions.tag_id = tags.id
+#   INNER JOIN merchants
+#   ON merchants.id = transactions.merchant_id;"
+#   result_hash = SqlRunner.run(sql)
+#   return result_hash.map {|tag| Transaction.new(tag)}
+# end
 
 
 
