@@ -27,14 +27,15 @@ end
 post '/transactions' do
   transaction = Transaction.new(params)
   transaction.save
-  redirect to '/transactions'
+  erb(:"transaction/saved")
 end
 # Posts to the database the data inserted on the table
 
 
 
 get '/transactions/total' do
-  @total = Transaction.current_budget
+  @current_budget = Transaction.current_budget
+  @total = Transaction.total_amount_spent
 erb(:"transaction/total")
 end
 # Executes the current_budget method
@@ -42,4 +43,34 @@ end
 
 
 
+get '/transactions/:id' do
+ 
+erb(:"transaction/show")
+end
+ # Shows an individual transaction
 
+
+
+get '/transactions/:id/edit' do
+ 
+erb(:"transaction/show")
+end
+# Edits a transaction
+ 
+
+
+
+ post '/transactions/:id' do
+  
+ redirect to '/transactions'
+ end
+  # Updates a transaction
+
+
+
+
+  post '/transactions/:id/delete' do
+   
+  redirect to '/transactions'
+  end
+   # Deletes a transaction

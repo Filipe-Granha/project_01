@@ -1,25 +1,35 @@
+
+
+<div>
 <h1>All transactions</h1>
-
-
 <table>
   <tr>
+    <th>ID</th>
+    
     <th>Amount</th>
-    <th></th>
+   
     <th>Day</th>
-    <th></th>
+    
     <th>Merchant</th>
-    <th></th>
+  
     <th>Tag</th>
   </tr>
   <% for transaction in @transactions %>
   <tr>
+    <td><%= transaction.id %></td>
+   
     <td><%= transaction.amount %></td>
-    <td>|</td>
+ 
     <td><%= transaction.date %></td>
-    <td>|</td>
+  
     <td><%= transaction.merchant.name %></td>
-    <td>|</td>
+ 
     <td><%= transaction.tag.name %></td>
   </tr>
   <% end %>
-</table>  
+</table>
+</div>  
+<div>
+  <p>Select a Transaction ID to change or delete that transaction</p>
+</div>
+

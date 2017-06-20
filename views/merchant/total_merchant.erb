@@ -3,14 +3,14 @@
 <table>
   <tr>
     <th>Merchant</th>
-    <th></th>
+    
     <th>Total</th>
   </tr>
   <% for merchant in @merchants %>
 
     <tr>
       <td><%= merchant.name %></td>
-      <td>|</td>
+      
       <td><%= Transaction.total_spent_by_merchant(merchant.id) %></td>
     </tr>
 

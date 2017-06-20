@@ -14,7 +14,7 @@ class Transaction
     @tag_id = options["tag_id"].to_i
   end
 
-
+ 
 
   def Transaction.all()
     sql = "SELECT * FROM transactions;"
@@ -110,16 +110,14 @@ class Transaction
 
 # THESE TWO METHODS WILL ALLOW TO GET THE TOTAL SPENT PER tag:
 
-# dá-me um array com objectos lá dentro
 def self.transactions_by_tag(tag_id)
   sql = "SELECT * FROM transactions WHERE tag_id = #{tag_id};"
   result_hash = SqlRunner.run(sql)
   return result_hash.map {|transaction| Transaction.new(transaction)}
-end
+end  # dá-me um array com objectos lá dentro
 # search transactions by their tags
 # the .map will take the array of hashes and allow to transform each hash into something else (an object in this case), and put all the results (objects) inside a new array
 # dá-me na mesma as transactions, mas apenas aquelas que corresponderem à tag que eu seleccionar
-
 
 
 # capta e soma o .amount de cada transaction que corresponda à tag especificada 

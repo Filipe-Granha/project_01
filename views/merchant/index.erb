@@ -1,1 +1,14 @@
 <h1>Merchants</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  <% for merchant in @merchants %>
+  <tr>
+    <td><%= merchant.name %></td>
+    <td>|</td>
+  </tr>
+  <% end %>
+</table>  
