@@ -1,0 +1,25 @@
+<h1>All transactions</h1>
+
+
+<table>
+  <tr>
+    <th>Amount</th>
+    <th></th>
+    <th>Day</th>
+    <th></th>
+    <th>Merchant</th>
+    <th></th>
+    <th>Tag</th>
+  </tr>
+  <% for transaction in @transactions %>
+  <tr>
+    <td><%= transaction.amount %></td>
+    <td>|</td>
+    <td><%= transaction.day %></td>
+    <td>|</td>
+    <td><%= transaction.merchant_id %></td>
+    <td>|</td>
+    <td><%= transaction.tag_id %></td>
+  </tr>
+  <% end %>
+</table>

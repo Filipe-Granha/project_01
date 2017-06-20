@@ -1,0 +1,16 @@
+body {
+  background: #efa91b;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-family: 'Merriweather', serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+    text-align: right;
+}

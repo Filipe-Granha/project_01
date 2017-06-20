@@ -36,5 +36,32 @@ end
 
 
 
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Type</th>
+  </tr>
+  <% for zombie in @zombies %>
+  <tr>
+    <td><%= zombie.name %></td>
+    <td>|</td>
+    <td><%= zombie.type %></td>
+  </tr>
+  <% end %>
+</table>
 
 
+<div id="transaction-wrapper">
+  <% @transactions.each do |transaction| %>
+
+  <div class="transaction">
+    <h3><a href="/transaction/<%= transaction.id %>"></a></h3>
+    <p>Amount: <%= transaction.amount %></p>
+    <p>Day: <%= transaction.day %></p>
+    <p>Merchant: <%= transaction.merchant_id %></p>
+    <p>Tag: <%= transaction.tag_id %></p>
+  </div>
+
+  <% end %>
+</div>
