@@ -11,6 +11,8 @@ get '/transactions' do
   @transactions = Transaction.all
 erb(:"transaction/index")
 end
+# Will show table with all transactions
+
 
 get '/transactions/new' do
   @transactions = Transaction.all
@@ -18,14 +20,17 @@ get '/transactions/new' do
   @tags = Tag.all
 erb(:"transaction/new")
 end
+# Should show a form to receive data from user
 
 post '/transactions' do
-
-erb(:"transaction/create")
+  transaction = Transaction.new(params)
+  transaction.save
+  redirect to '/transactions'
 end
 
+
 get '/transactions/total' do
-# Form to introduce new transactions
+  @total = Transaction.current_budget
 erb(:"transaction/total")
 end
 

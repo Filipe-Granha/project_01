@@ -1,7 +1,7 @@
 require_relative("../models/merchant")
 require_relative("../models/tag")
 require_relative("../models/transaction")
-require("pry-byebug")
+
 
 
 Merchant.delete_all()
@@ -77,7 +77,7 @@ tag4.save
 
 transaction1 = Transaction.new({
   "amount" => 100,
-  "day" => "2017-06-02",
+  "date" => "2017-06-02",
   "merchant_id" => merchant7.id,
   "tag_id" => tag3.id
   })
@@ -85,7 +85,7 @@ transaction1.save
 
 transaction2 = Transaction.new({
   "amount" => 40,
-  "day" => "2017-06-10",
+  "date" => "2017-06-10",
   "merchant_id" => merchant1.id,
   "tag_id" => tag1.id
   })
@@ -93,7 +93,7 @@ transaction2.save
 
 transaction3 = Transaction.new({
   "amount" => 1000,
-  "day" => "2017-06-10",
+  "date" => "2017-06-10",
   "merchant_id" => merchant5.id,
   "tag_id" => tag2.id
   })
@@ -101,7 +101,7 @@ transaction3.save
 
 transaction4 = Transaction.new({
   "amount" => 108,
-  "day" => "2017-06-08",
+  "date" => "2017-06-08",
   "merchant_id" => merchant6.id,
   "tag_id" => tag4.id
   })
@@ -109,12 +109,9 @@ transaction4.save
 
 transaction5 = Transaction.new({
   "amount" => 100,
-  "day" => "2017-06-17",
+  "date" => "2017-06-17",
   "merchant_id" => merchant4.id,
   "tag_id" => tag3.id
   })
 transaction5.save
 
-
-binding.pry
-nil
