@@ -1,1 +1,15 @@
-<h1>The Tags here</h1>
+<h1>Tags:</h1>  
+
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  <% for tag in @tags %>
+  <tr>
+    <td><%= tag.name %></td>
+    <td>|</td>
+  </tr>
+  <% end %>
+</table>  
