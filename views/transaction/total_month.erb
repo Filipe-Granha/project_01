@@ -1,0 +1,19 @@
+<h1>Total spent per Month:</h1> 
+
+<table>
+  <tr>
+    <th>Month</th>
+    <th></th>
+    <th>Total</th>
+  </tr>
+  <% for month in @months %>
+
+    <tr>
+      <td><% tag.name %></td>
+      <td></td>
+      <td><%= Transaction.total_spent_by_month(tag.id) %></td>
+    </tr>
+
+
+  <% end %>
+</table>  

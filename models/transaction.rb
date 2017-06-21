@@ -54,11 +54,11 @@ class Transaction
 
 
   def self.current_budget()
-    budget = 10000
+    budget = 8000
     expenditure = self.total_amount_spent
     amount_available = budget - expenditure
       if (budget > expenditure)
-        return "You still have #{amount_available}"
+        return "You still have £ #{amount_available} available!"
       else
         return "You've already spent more than your budget!"
       end
@@ -152,6 +152,22 @@ end
 
 
 
+
+
+
+# def self.transactions_by_month(date)
+#   sql = "SELECT MONTH FROM transactions WHERE date = #{date};"
+#   result_hash = SqlRunner.run(sql)
+#   return result_hash.map {|month| Transaction.new(month)}
+# end
+
+
+# def self.total_spent_by_month(date)
+#   total = 0
+#   transactions = self.transactions_by_month(date)
+#   transactions.each {|month| total+= transaction.amount.to_i}
+#   return total
+# end
 
 
 

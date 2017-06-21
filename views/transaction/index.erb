@@ -1,11 +1,11 @@
-
-
 <div>
 <h1>All transactions</h1>
+</div>  
 
+<div>
 <% if @transactions.length > 0  %>
-<table>
-  <tr>
+<table cellspacing="10" cellpadding="5">
+  <tr "text-align: center">
     
     <th>Amount</th>
     <th>Day</th>
@@ -17,7 +17,7 @@
   </tr>
 
   <% for transaction in @transactions %>
-  <tr>
+  <tr "text-align: center">
     <td><%= transaction.amount %></td>
     <td><%= transaction.date %></td>
     <td><%= transaction.merchant.name %></td>
@@ -35,6 +35,7 @@
 
   <% end %>
   <% else %>
+  <br><br>
   <%= "You have no transactions" %>
   <% end %>
 </table>

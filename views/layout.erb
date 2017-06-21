@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="/styles/style.css">
-  <title>Budgetiny</title>
+  <html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="/styles/style.css">
+      <title>Budgetiny</title>
+      <link rel="icon" href="/images/favicon.png" />
+    </head>
 
-  <link rel="icon" href="/images/favicon.png" />
-</head>
+
+    <body>
+    <header>
+     
+          <div id="display-types">
+      
+ 
+    
+     <table cellspacing="10" cellpadding="5">
+       
+
+     <tr>
+       <td><a href="/"><img src="/images/logo.png" alt="budgetiny" style="width:200px;height:60px;border:0;"></a></td>
+       <td><a href="/transactions" style="text-decoration: none">View Transactions</a></td>
+       <td><a href="/transactions/new" style="text-decoration: none">Add New Transaction</a></td>
+       <td><a href="/transactions/total" style="text-decoration: none">Your Totals</a></td>
+       <td><a href="/about_us" style="text-decoration: none">About Us</a></td>
+       <td><a href="/thoughts" style="text-decoration: none">Thought for the Day!</a></td>
+
+     </tr>
+     </table>
+
+     </div>
 
 
-<body>
-      <ul>
-        <a href="/"><img src="/images/logo.png" alt="budgetiny" style="width:200px;height:60px;border:0;"></a>
-        <li><a href="/transactions">View Transactions</a></li>
-        <li><a href="/transactions/new">Add New Transaction</a></li>
-        <li><a href="/transactions/total">Your Totals</a></li>
-        <!-- <li><a href="/merchants/total">Total Spent Per Merchant</a></li> 
-        <li><a href="/tags/total">Total Spent Per Tag</a></li>      -->   
-        <!-- <li><a href="/merchants">Merchants</a></li> -->
-        <li><a href="/about_us">About Us</a></li>
-        <li><a href="/thoughts">Thought of the Day!</a></li>
-      </ul>
+      </header>
+<br>
       <%= yield %>
-</body>
+<br><br>
+
+<div class="footer">Copyright © 2017 Cohort 13. All Rights Reserved.</div>
+
+
+    </body>
 
 
 
-</html>
+  </html>  
