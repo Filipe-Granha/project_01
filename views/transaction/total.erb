@@ -3,3 +3,41 @@
 <p>Your monthly budget is 10000.</p>
 
 <h1><%= @current_budget %></h1>
+
+
+
+<div>
+<h1>Total spent per Merchant:</h1> 
+<table>
+  <tr>
+    <th>Merchant</th>
+    <th>Total</th>
+  </tr>
+  <% for merchant in @merchants %>
+    <tr>
+      <td><%= merchant.name %></td>
+      <td><%= Transaction.total_spent_by_merchant(merchant.id) %></td>
+    </tr>
+  <% end %>
+</table>  
+</div>
+
+
+
+<div>
+  <h1>Total spent per Tag:</h1> 
+  <table>
+    <tr>
+      <th>Tag</th>
+      <th></th>
+      <th>Total</th>
+    </tr>
+    <% for tag in @tags %>
+      <tr>
+        <td><%= tag.name %></td>
+        <td></td>
+        <td><%= Transaction.total_spent_by_tag(tag.id) %></td>
+      </tr>
+    <% end %>
+  </table>  
+</div>

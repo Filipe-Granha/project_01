@@ -31,6 +31,15 @@ class Merchant
 
 
 
+  def self.find(id)
+    sql = "SELECT * FROM merchants WHERE id = #{id}"
+    result = SqlRunner.run(sql).first
+    merchant = Merchant.new(result)
+    return merchant
+  end
+
+
+
 
   def self.delete_all()
     sql = "DELETE FROM merchants"

@@ -21,6 +21,18 @@ class Tag
 
 
 
+
+  def self.find(id)
+    sql = "SELECT * FROM tags WHERE id = #{id}"
+    result = SqlRunner.run(sql).first
+    tag = Tag.new(result)
+    return tag
+  end
+
+
+
+
+
   def Tag.all()
     sql = "SELECT * FROM tags;"
     result_hash = SqlRunner.run(sql)

@@ -1,5 +1,5 @@
 body {
-  background: #efa91b;
+  background: #ffffff;
   background-size: 100%;
   background-repeat: no-repeat;
   font-family: 'Merriweather', serif;
@@ -8,9 +8,22 @@ body {
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px #1d7db3;
 }
 
 th {
     text-align: right;
+}
+
+li {
+    display: inline;
+    
+}
+
+*{
+     margin:0px auto;
+}
+
+body{
+     text-align:center;
 }

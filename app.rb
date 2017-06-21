@@ -12,3 +12,10 @@ end
 get '/about_us' do
 erb(:"../views/about_us")
 end
+
+
+get '/thoughts' do
+ 
+  @thoughts = Thought.all
+  erb ( :"/thoughts" )
+end 

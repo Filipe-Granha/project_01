@@ -4,32 +4,31 @@
 <h1>All transactions</h1>
 <table>
   <tr>
-    <th>ID</th>
     
     <th>Amount</th>
-   
     <th>Day</th>
-    
     <th>Merchant</th>
-  
     <th>Tag</th>
+    <th></th>
+   
   </tr>
   <% for transaction in @transactions %>
   <tr>
-    <td><%= transaction.id %></td>
-   
     <td><%= transaction.amount %></td>
- 
     <td><%= transaction.date %></td>
-  
     <td><%= transaction.merchant.name %></td>
- 
     <td><%= transaction.tag.name %></td>
+    <td style='white-space: nowrap'>
+    <form action="/transactions/<%= transaction.id %>/edit" method="GET">
+           <input class="btn btn--danger" type="submit" value="Edit" />
+         </form>
+         
+         <form action="/transactions/<%= transaction.id %>/delete" method="POST">
+           <input class="btn btn--danger" type="submit" value="Delete" />
+         </form></td>
   </tr>
   <% end %>
 </table>
 </div>  
-<div>
-  <p>Select a Transaction ID to change or delete that transaction</p>
-</div>
+
 

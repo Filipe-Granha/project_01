@@ -4,7 +4,7 @@ require( 'pry-byebug' )
 require_relative( '../models/transaction' )
 require_relative( '../models/merchant' )
 require_relative( '../models/tag' )
-
+require_relative( '../models/thought' )
 
 
 get '/transactions' do
@@ -31,11 +31,13 @@ post '/transactions' do
 end
 # Posts to the database the data inserted on the table
 
-
+ 
 
 get '/transactions/total' do
   @current_budget = Transaction.current_budget
   @total = Transaction.total_amount_spent
+  @merchants = Merchant.all
+  @tags = Tag.all
 erb(:"transaction/total")
 end
 # Executes the current_budget method
@@ -43,8 +45,19 @@ end
 
 
 
+post '/transactions/:id/delete' do
+  Transaction.delete(params[:id])
+  redirect to("/transactions")
+end 
+# Deletes an object from the table through the Delete button
+
+
+
+
+
 get '/transactions/:id' do
- 
+  
+
 erb(:"transaction/show")
 end
  # Shows an individual transaction
@@ -52,7 +65,8 @@ end
 
 
 get '/transactions/:id/edit' do
- 
+ # use find method here
+ # use method edit here
 erb(:"transaction/show")
 end
 # Edits a transaction
@@ -60,17 +74,10 @@ end
 
 
 
- post '/transactions/:id' do
-  
- redirect to '/transactions'
- end
-  # Updates a transaction
+ # post '/transactions/:id' do
+ #  # use find method here
+ # redirect to '/transactions'
+ # end
+ #  # Updates a transaction
 
 
-
-
-  post '/transactions/:id/delete' do
-   
-  redirect to '/transactions'
-  end
-   # Deletes a transaction

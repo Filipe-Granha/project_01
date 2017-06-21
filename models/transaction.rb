@@ -25,6 +25,17 @@ class Transaction
   # It allows me to get the rows from the table (hashes) and show them to me in the form of objects
 
 
+
+  def self.find(id)
+    sql = "SELECT * FROM transactions WHERE id = #{id}"
+    result = SqlRunner.run(sql).first
+    transaction = Transaction.new(result)
+    return transaction
+  end
+
+
+
+
   def save()
     sql = "INSERT into transactions (amount, date, merchant_id, tag_id)
     VALUES ('#{@amount}', '#{@date}', '#{@merchant_id}', '#{@tag_id}') RETURNING *;"
@@ -78,8 +89,8 @@ class Transaction
   end
 
 
-  def self.delete(id)
-     sql = "DELETE FROM transactions where id = #{@id}"
+  def Transaction.delete(id)
+     sql = "DELETE FROM transactions WHERE id = #{id}"
      SqlRunner.run(sql)
   end
 

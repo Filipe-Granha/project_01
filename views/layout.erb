@@ -3,19 +3,22 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/styles/style.css">
   <title>Budgetiny</title>
+
+  <link rel="icon" href="/images/favicon.png" />
 </head>
 
 
 <body>
       <ul>
         <a href="/"><img src="/images/logo.png" alt="budgetiny" style="width:200px;height:60px;border:0;"></a>
-        <li><a href="/transactions">View All Transactions</a></li>
+        <li><a href="/transactions">View Transactions</a></li>
         <li><a href="/transactions/new">Add New Transaction</a></li>
-        <li><a href="/transactions/total">Total Spent</a></li>
-        <li><a href="/merchants/total">Total Spent Per Merchant</a></li> 
-        <li><a href="/tags/total">Total Spent Per Tag</a></li>        
+        <li><a href="/transactions/total">Your Totals</a></li>
+        <!-- <li><a href="/merchants/total">Total Spent Per Merchant</a></li> 
+        <li><a href="/tags/total">Total Spent Per Tag</a></li>      -->   
         <!-- <li><a href="/merchants">Merchants</a></li> -->
         <li><a href="/about_us">About Us</a></li>
+        <li><a href="/thoughts">Thought of the Day!</a></li>
       </ul>
       <%= yield %>
 </body>
