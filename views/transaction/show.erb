@@ -1,0 +1,10 @@
+<h2>Update this transaction?</h2>
+
+<p>Amount: <%= @transaction.amount %></p>
+<p>Date: <%= @transaction.date %></p>
+<p>Merchant: <%= @transaction.merchant_id %></p>
+<p>Tag: <%= @transaction.tag_id %></p>
+
+
+<form action="/transactions/<%= @transaction.id %>/edit" method="get"><input type="submit" value="Yes"></form> 
+<form action="/transactions" method="get"><input type="submit" value="No"></form>

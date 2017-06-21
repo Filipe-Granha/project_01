@@ -55,9 +55,8 @@ end
 
 
 
-get '/transactions/:id' do
-  
-
+get '/transactions/:id/show' do
+  @transaction = Transaction.find(params['id'])
 erb(:"transaction/show")
 end
  # Shows an individual transaction

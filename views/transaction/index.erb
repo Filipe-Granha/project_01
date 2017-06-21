@@ -20,7 +20,7 @@
     <td><%= transaction.merchant.name %></td>
     <td><%= transaction.tag.name %></td>
     <td style='white-space: nowrap'>
-    <form action="/transactions/<%= transaction.id %>/edit" method="GET">
+    <form action="/transactions/<%= transaction.id %>/show" method="GET">
            <input class="btn btn--danger" type="submit" value="Edit" />
          </form>
          </td>
