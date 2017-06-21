@@ -10,6 +10,7 @@
     <th>Merchant</th>
     <th>Tag</th>
     <th></th>
+    <th></th>
    
   </tr>
   <% for transaction in @transactions %>
@@ -22,7 +23,8 @@
     <form action="/transactions/<%= transaction.id %>/edit" method="GET">
            <input class="btn btn--danger" type="submit" value="Edit" />
          </form>
-         
+         </td>
+         <td>
          <form action="/transactions/<%= transaction.id %>/delete" method="POST">
            <input class="btn btn--danger" type="submit" value="Delete" />
          </form></td>
