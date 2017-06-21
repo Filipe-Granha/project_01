@@ -26,7 +26,7 @@
          </td>
          <td>
          <form action="/transactions/<%= transaction.id %>/delete" method="POST">
-           <input class="btn btn--danger" type="submit" value="Delete" />
+           <input class="btn btn--danger" type="submit" onclick="return confirm('Are you sure?')" value="Delete" />
          </form></td>
   </tr>
   <% end %>
