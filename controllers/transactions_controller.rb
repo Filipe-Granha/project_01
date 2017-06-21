@@ -64,9 +64,9 @@ end
 
 
 get '/transactions/:id/edit' do
- # use find method here
+ @transaction = Transaction.find(params['id'])
  # use method edit here
-erb(:"transaction/show")
+erb(:"transaction/edit")
 end
 # Edits a transaction
  
