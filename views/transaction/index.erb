@@ -2,6 +2,8 @@
 
 <div>
 <h1>All transactions</h1>
+
+<% if @transactions.length > 0  %>
 <table>
   <tr>
     
@@ -13,6 +15,7 @@
     <th></th>
    
   </tr>
+
   <% for transaction in @transactions %>
   <tr>
     <td><%= transaction.amount %></td>
@@ -26,9 +29,13 @@
          </td>
          <td>
          <form action="/transactions/<%= transaction.id %>/delete" method="POST">
-           <input class="btn btn--danger" type="submit" onclick="return confirm('Are you sure?')" value="Delete" />
+           <input class="btn btn--danger" type="submit" value="Delete" />
          </form></td>
   </tr>
+
+  <% end %>
+  <% else %>
+  <%= "You have no transactions" %>
   <% end %>
 </table>
 </div>  
