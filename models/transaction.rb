@@ -95,21 +95,11 @@ class Transaction
   end
 
 
-  def update()
-    sql = "UPDATE transactions SET (
-    amount,
-    date,
-    merchant_id,
-    tag_id
-    ) = (
-    '#{@amount}',
-    '#{@date}',
-    '#{merchant_id}',
-    '#{tag_id}') WHERE id = #{@id};"
+
+  def update
+    sql = "UPDATE transactions SET amount = '#{@amount}', date = '#{@date}', merchant_id = #{@merchant_id}, tag_id = '#{@tag_id}' WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
-
-
 
   
 

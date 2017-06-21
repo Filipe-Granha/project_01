@@ -2,12 +2,12 @@
 
 <p>Amount: <%= @transaction.amount %></p>
 <p>Date: <%= @transaction.date %></p>
-<p>Merchant: <%= @transaction.merchant_id %></p>
-<p>Tag: <%= @transaction.tag_id %></p>
+<p>Merchant: <%= @transaction.merchant.name %></p>
+<p>Tag: <%= @transaction.tag.name %></p>
 
 
 
 
 
 <form action="/transactions/<%= @transaction.id %>/edit" method="get"><input type="submit" value="Yes"></form> 
-<form action="/transactions" method="get"><input type="submit" value="No"></form>
+<form action="/transactions" method="get"><input type="submit" value="No"></form> 
